@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import "./components/molecules/ProductCard"
 import Layout from "./components/templates/Layout"
 import Gallery from "./components/organisms/gallery/Gallery"
@@ -11,7 +11,7 @@ import ProductDetail from "./components/organisms/productDetail/ProductDetail"
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HashRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/gallery" replace />} />
@@ -20,8 +20,10 @@ createRoot(document.getElementById('root')).render(
           <Route path="register" element={<Register />} />
           <Route path="profile" element={<Profile />} />
           <Route path="product/:id" element={<ProductDetail />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   </StrictMode>,
 )
